@@ -62,14 +62,15 @@ npm run dev
 ---
 ## API Routes
 Authentication
-|--|--|--|
 | Method | Endpoint | Description |
+|---|---|---|
 | POST | `/login` | User Login |
 | POST | `/logout` | User Logout |
 | POST | `/register`| Register User |
 
 Projects
 | Method | Endpoint	| Description |
+|---|---|---|
 | GET | `/projects` | List all projects |
 | POST | `/projects` | Create a new project |
 | GET | `/projects/{id}` | Get project details |
@@ -78,6 +79,7 @@ Projects
 
 Bugs
 | Method | Endpoint |Description |
+|---|---|---|
 | GET | `/bugs`	| List all bugs |
 | POST | `/bugs` | Create a bug |
 | GET | `/bugs/{id}` | Get bug details |
