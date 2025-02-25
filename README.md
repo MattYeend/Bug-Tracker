@@ -1,7 +1,7 @@
 # Bug Tracker in Laravel
 A simple bug and project tracking system built with Laravel 11 and Vue.js (Inertia.js) using the Repository Pattern, RESTful API, Sanctum Authentication, and TailwindCSS UI.
 
---
+---
 ## Features
 - Project Management: Create, update, delete, and list projects
 - Bug Tracking: Assign bugs to projects, update statuses
@@ -10,7 +10,7 @@ A simple bug and project tracking system built with Laravel 11 and Vue.js (Inert
 - Inertia.js & Vue 3: Modern frontend with TailwindCSS
 - API-Ready: Can be used as a RESTful API
 
---
+---
 ## Installation 
 - Clone the repository
 ```bash
@@ -59,7 +59,7 @@ php artisan serve
 npm run dev
 ```
 
---
+---
 ## API Routes
 Authentication
 |--|--|--|
@@ -84,7 +84,7 @@ Bugs
 | PUT | `/bugs/{id}` | Update bug status |
 | DELETE | `/bugs/{id}` | Delete a bug |
 
---
+---
 ## Frontend
 The frontend is built using Vue 3, TailwindCSS, and Inertia.js inside `resources/js/Pages`.
 To start the frontend:
@@ -92,7 +92,7 @@ To start the frontend:
 npm run dev
 ```
 
---
+---
 ## Authentication
 The app uses Laravel Sanctum for authentication.
 
@@ -121,7 +121,7 @@ POST /login
 POST /logout
 ```
 
---
+---
 ## How to contribute
 - Log an issue
 - Add as much information as possible
@@ -132,20 +132,20 @@ POST /logout
 - Create a pull request to fully describe the fix
 - Any new text on screen, add to relevant file(s) within the lang/ folder
 
--- 
+---
 ## Language files
 - When creating a new view page, nor new module, ensure there is a relevant language file(s) for said module (or add to existing language file if adding to existing viewable page)
 - Ensure the language files makes sense to what it does, e.g. `users.php` for Users
 
---
+---
 ## Misc
 - Clear Application Cache: `php artisan cache:clear`
 - Clear View Cache: `php artisan view:clear`
 - Clear Route Cache: `php artisan route:clear`
 - Clear Configuration Cache: `php artisan config:clear`
 
---
+---
 ## Tech
-Laravel: v11.44.0
-PHP: v8.4.4
-Vue: 3.5.13
+- Laravel: v11.44.0
+- PHP: v8.4.4
+- Vue: 3.5.13
