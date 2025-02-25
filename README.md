@@ -1,66 +1,151 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Bug Tracker in Laravel
+A simple bug and project tracking system built with Laravel 11 and Vue.js (Inertia.js) using the Repository Pattern, RESTful API, Sanctum Authentication, and TailwindCSS UI.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+--
+## Features
+- Project Management: Create, update, delete, and list projects
+- Bug Tracking: Assign bugs to projects, update statuses
+- User Authentication: Secure API with Laravel Sanctum
+- Repository Pattern: Clean and maintainable code
+- Inertia.js & Vue 3: Modern frontend with TailwindCSS
+- API-Ready: Can be used as a RESTful API
 
-## About Laravel
+--
+## Installation 
+- Clone the repository
+```bash
+git clone https://github.com/MattYeend/Bug-Tracker.git
+cd laravel-bug-tracker
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Install dependancies
+```bash
+composer install
+npm install
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Set up the environment
+Create a `.env` file
+```bash
+cp .env.example .env
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Generate application key
+```bash
+php artisan key:generate
+```
 
-## Learning Laravel
+Set up database credentials
+```makefile
+DB_DATABASE=bug_tracker
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Run migrations
+```bash
+php artisan migration --seed
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Install Laravel Sanctum
+```bash
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Run the application 
+```bash
+php artisan serve
+npm run dev
+```
 
-## Laravel Sponsors
+--
+## API Routes
+Authentication
+|--|--|--|
+| Method | Endpoint | Description |
+| POST | `/login` | User Login |
+| POST | `/logout` | User Logout |
+| POST | `/register`| Register User |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Projects
+| Method | Endpoint	| Description |
+| GET | `/projects` | List all projects |
+| POST | `/projects` | Create a new project |
+| GET | `/projects/{id}` | Get project details |
+| PUT | `/projects/{id}` | Update a project |
+| DELETE | `/projects/{id}`	| Delete a project |
 
-### Premium Partners
+Bugs
+| Method | Endpoint |Description |
+| GET | `/bugs`	| List all bugs |
+| POST | `/bugs` | Create a bug |
+| GET | `/bugs/{id}` | Get bug details |
+| PUT | `/bugs/{id}` | Update bug status |
+| DELETE | `/bugs/{id}` | Delete a bug |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+--
+## Frontend
+The frontend is built using Vue 3, TailwindCSS, and Inertia.js inside `resources/js/Pages`.
+To start the frontend:
+```bash
+npm run dev
+```
 
-## Contributing
+--
+## Authentication
+The app uses Laravel Sanctum for authentication.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Register a User
+```bash
+POST /register
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password",
+    "password_confirmation": "password"
+}
+```
 
-## Code of Conduct
+### Login
+```bash
+POST /login
+{
+    "email": "john@example.com",
+    "password": "password"
+}
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Logout
+```bash
+POST /logout
+```
 
-## Security Vulnerabilities
+--
+## How to contribute
+- Log an issue
+- Add as much information as possible
+- Assign it to yourself
+- Checkout branch, add issue number to start of branch (from develop branch, `git checkout -b number-short-description-branch`)
+- Commit message should start with a hash (#) and the issue number then message of issue
+- Push branch
+- Create a pull request to fully describe the fix
+- Any new text on screen, add to relevant file(s) within the lang/ folder
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-- 
+## Language files
+- When creating a new view page, nor new module, ensure there is a relevant language file(s) for said module (or add to existing language file if adding to existing viewable page)
+- Ensure the language files makes sense to what it does, e.g. `users.php` for Users
 
-## License
+--
+## Misc
+- Clear Application Cache: `php artisan cache:clear`
+- Clear View Cache: `php artisan view:clear`
+- Clear Route Cache: `php artisan route:clear`
+- Clear Configuration Cache: `php artisan config:clear`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+--
+## Tech
+Laravel: v11.44.0
+PHP: v8.4.4
+Vue: 3.5.13
