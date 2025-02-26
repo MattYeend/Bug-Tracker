@@ -39,19 +39,66 @@ const form = useForm({
             class="mt-6 space-y-6"
         >
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="title" value="Title" />
 
                 <TextInput
-                    id="name"
+                    id="title"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
+                    v-model="form.title"
                     required
                     autofocus
-                    autocomplete="name"
+                    autocomplete="title"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-2" :message="form.errors.title" />
+            </div>
+
+            <div>
+                <InputLabel for="first_name" value="First Name" />
+
+                <TextInput
+                    id="first_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.first_name"
+                    required
+                    autofocus
+                    autocomplete="first_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.first_name" />
+            </div>
+
+            <div>
+                <InputLabel for="middle_name" value="Middle Name" />
+
+                <TextInput
+                    id="middle_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.middle_name"
+                    autofocus
+                    autocomplete="middle_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.middle_name" />
+            </div>
+
+            <div>
+                <InputLabel for="last_name" value="Last Name" />
+
+                <TextInput
+                    id="last_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.last_name"
+                    required
+                    autofocus
+                    autocomplete="last_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.last_name" />
             </div>
 
             <div>
