@@ -18,7 +18,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'title',
+        'first_name',
+        'middle_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -44,5 +47,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getShortName(): string{
+        return $this->first_name;
+    }
+
+    public function getName(): string{
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getFullNameLong(): string {
+        return $this->title . ' ' . $this->first_name . ($this->middle_name ? ' ' . $this->middle_name : '') . ' ' . $this->last_name;
+    }
+
+    public function getFullNameShort(): string{
+        return $this->first_name[0] . ' ' . $this->last_name;
     }
 }
