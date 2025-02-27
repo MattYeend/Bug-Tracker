@@ -148,6 +148,6 @@ POST /logout
 
 ---
 ## Tech
-- Laravel: v11.44.0
+- Laravel: v12.0.1
 - PHP: v8.4.4
 - Vue: 3.5.13
