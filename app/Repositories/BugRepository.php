@@ -36,4 +36,15 @@ class BugRepository
     {
         return $bug->delete();
     }
+
+    public function getBugStatistics()
+    {
+        return [
+            'total' => Bug::count(),
+            'reported' => Bug::where('status', 'reported')->count(),
+            'started' => Bug::where('status', 'started')->count(),
+            'in_progress' => Bug::where('status', 'in_progress')->count(),
+            'closed' => Bug::where('status', 'closed')->count(),
+        ];
+    }
 }

@@ -35,4 +35,14 @@ class ProjectRepository
     {
         return $project->delete();
     }
+
+    public function getProjectStatistics()
+    {
+        return [
+            'total' => Project::count(),
+            'started' => Project::where('status', 'started')->count(),
+            'in_progress' => Project::where('status', 'in_progress')->count(),
+            'closed' => Project::where('status', 'closed')->count(),
+        ];
+    }
 }
