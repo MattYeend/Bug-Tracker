@@ -37,7 +37,12 @@ class NewPasswordController extends Controller
         $this->validatePasswordReset($request);
 
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $request->only(
+                'email',
+                'password',
+                'password_confirmation',
+                'token'
+            ),
             fn ($user) => $this->resetUserPassword($user, $request->password)
         );
 
@@ -63,8 +68,9 @@ class NewPasswordController extends Controller
         event(new PasswordReset($user));
     }
 
-    private function handlePasswordResetResponse(string $status): RedirectResponse
-    {
+    private function handlePasswordResetResponse(
+        string $status
+    ): RedirectResponse {
         if ($status === Password::PASSWORD_RESET) {
             return redirect()->route('login')->with('status', __($status));
         }

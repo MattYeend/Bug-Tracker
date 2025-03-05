@@ -16,7 +16,7 @@ class BugController extends Controller
     protected $projectRepo;
 
     public function __construct(
-        BugRepository $repo, 
+        BugRepository $repo,
         ProjectRepository $projectRepo
     ) {
         $this->repo = $repo;

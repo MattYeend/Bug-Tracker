@@ -28,7 +28,10 @@ Route::middleware('guest')->group(function () {
     )
         ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+    Route::post(
+        'forgot-password',
+        [PasswordResetLinkController::class, 'store']
+    )
         ->name('password.email');
 
     Route::get(
@@ -61,7 +64,10 @@ Route::middleware('auth')->group(function () {
     )
         ->name('password.confirm');
 
-    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::post(
+        'confirm-password',
+        [ConfirmablePasswordController::class, 'store']
+    );
 
     Route::put('password', [PasswordController::class, 'update'])
         ->name('password.update');
