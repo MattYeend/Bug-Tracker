@@ -7,29 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Log extends Model
 {
-    protected $table = 'logs';
-
-    protected $fillable = [
-        'action_id',
-        'data',
-        'logged_in_user_id',
-        'related_to_user_id',
-    ];
-
-    protected $casts = [
-        'data' => 'array',
-    ];
-
-    public function loggedInUser()
-    {
-        return $this->belongsTo(User::class, 'logged_in_user_id');
-    }
-
-    public function relatedToUser()
-    {
-        return $this->belongsTo(User::class, 'related_to_user_id');
-    }
-
+    // Constants
     public const ACTION_LOGIN = 1;
     public const ACTION_LOGOUT = 2;
     public const ACTION_CREATE_USER = 3;
@@ -62,15 +40,47 @@ class Log extends Model
     public const ACTION_FIVE_HUNDRED_ERRORS = 30;
     public const ACTION_CLEAR_CACHE = 31;
 
-    public static function log($action = 0, $data = null, $logged_in_user_id = null, $related_to_user_id = null)
+    // Properties
+    protected $table = 'logs';
+
+    protected $fillable = [
+        'action_id',
+        'data',
+        'logged_in_user_id',
+        'related_to_user_id',
+    ];
+
+    protected $casts = [
+        'data' => 'array',
+    ];
+
+    // Relationships
+    public function loggedInUser()
     {
+        return $this->belongsTo(User::class, 'logged_in_user_id');
+    }
+
+    public function relatedToUser()
+    {
+        return $this->belongsTo(User::class, 'related_to_user_id');
+    }
+
+    // Methods
+    public static function log(
+        $action = 0,
+        $data = null,
+        $logged_in_user_id = null,
+        $related_to_user_id = null
+    ) {
         if (isset($action)) {
             $logged_in_user_id = $logged_in_user_id ?? Auth::id();
 
             if (is_array($data)) {
                 $data = json_encode($data);
             } elseif (!is_null($data)) {
-                throw new \InvalidArgumentException('Data must be an array or null.');
+                throw new \InvalidArgumentException(
+                    'Data must be an array or null.'
+                );
             }
 
             $log = new self();

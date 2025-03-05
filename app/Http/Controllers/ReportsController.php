@@ -9,11 +9,13 @@ use Inertia\Response;
 
 class ReportsController extends Controller
 {
-    protected ProjectRepository $projectRepository;
-    protected BugRepository $bugRepository;
+    protected $projectRepository;
+    protected $bugRepository;
 
-    public function __construct(ProjectRepository $projectRepository, BugRepository $bugRepository)
-    {
+    public function __construct(
+        ProjectRepository $projectRepository,
+        BugRepository $bugRepository
+    ) {
         $this->projectRepository = $projectRepository;
         $this->bugRepository = $bugRepository;
     }

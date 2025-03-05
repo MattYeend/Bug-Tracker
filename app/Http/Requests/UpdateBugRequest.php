@@ -22,7 +22,12 @@ class UpdateBugRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255|unique:bugs,title,NULL,id,project_id,' . $this->project_id,
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:bugs,title,NULL,id,project_id,' . $this->project_id,
+            ],
             'description' => 'required|string|max:5000',
             'status' => 'required|in:open,in_progress,resolved',
             'project_id' => 'required|exists:projects,id',

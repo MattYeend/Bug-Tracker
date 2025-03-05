@@ -41,7 +41,9 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request): RedirectResponse
     {
         $this->repo->create($request->validated());
-        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        return redirect()
+            ->route('projects.index')
+            ->with('success', 'Project created successfully.');
     }
 
     /**
@@ -70,7 +72,9 @@ class ProjectController extends Controller
         $project = $this->repo->find($id);
         $this->repo->update($project, $request->validated());
 
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
+        return redirect()
+            ->route('projects.index')
+            ->with('success', 'Project updated successfully.');
     }
 
     /**
@@ -81,6 +85,8 @@ class ProjectController extends Controller
         $project = $this->repo->find($id);
         $this->repo->delete($project);
 
-        return redirect()->route('projects.index')->with('success', 'Project deleted.');
+        return redirect()
+            ->route('projects.index')
+            ->with('success', 'Project deleted.');
     }
 }

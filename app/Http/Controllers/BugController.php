@@ -15,8 +15,10 @@ class BugController extends Controller
     protected $repo;
     protected $projectRepo;
 
-    public function __construct(BugRepository $repo, ProjectRepository $projectRepo)
-    {
+    public function __construct(
+        BugRepository $repo, 
+        ProjectRepository $projectRepo
+    ) {
         $this->repo = $repo;
         $this->projectRepo = $projectRepo;
     }
@@ -45,7 +47,9 @@ class BugController extends Controller
     public function store(StoreBugRequest $request): RedirectResponse
     {
         $this->repo->create($request->validated());
-        return redirect()->route('bugs.index')->with('success', 'Bug reported successfully.');
+        return redirect()
+            ->route('bugs.index')
+            ->with('success', 'Bug reported successfully.');
     }
 
     /**
@@ -64,7 +68,10 @@ class BugController extends Controller
     {
         $bug = $this->repo->find($id);
         $projects = $this->projectRepo->all();
-        return Inertia::render('Bugs/Edit', ['bug' => $bug, 'projects' => $projects]);
+        return Inertia::render(
+            'Bugs/Edit',
+            ['bug' => $bug, 'projects' => $projects]
+        );
     }
 
     /**
@@ -75,7 +82,9 @@ class BugController extends Controller
         $bug = $this->repo->find($id);
         $this->repo->update($bug, $request->validated());
 
-        return redirect()->route('bugs.index')->with('success', 'Bug updated successfully.');
+        return redirect()
+            ->route('bugs.index')
+            ->with('success', 'Bug updated successfully.');
     }
 
     /**

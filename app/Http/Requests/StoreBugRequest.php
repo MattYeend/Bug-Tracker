@@ -27,15 +27,17 @@ class StoreBugRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('bugs', 'title')->where('project_id', $this->project_id),
+                Rule::unique('bugs', 'title')
+                    ->where('project_id', $this->project_id),
             ],
-            'description' => 'required|string|max:5000', // Limiting to 5000 characters
+            'description' => 'required|string|max:5000',
             'status' => 'required|in:open,in_progress,resolved',
             'project_id' => 'required|exists:projects,id',
             'user_id' => [
                 'required',
                 'exists:users,id',
-                Rule::exists('project_users', 'user_id')->where('project_id', $this->project_id),
+                Rule::exists('project_users', 'user_id')
+                    ->where('project_id', $this->project_id),
             ],
             'created_by' => 'nullable|exists:users,id',
             'updated_by' => 'nullable|exists:users,id',
