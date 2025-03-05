@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens; 
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -50,19 +50,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function getShortName(): string{
+    public function getShortName(): string
+    {
         return $this->first_name;
     }
 
-    public function getName(): string{
+    public function getName(): string
+    {
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getFullNameLong(): string {
+    public function getFullNameLong(): string
+    {
         return $this->title . ' ' . $this->first_name . ($this->middle_name ? ' ' . $this->middle_name : '') . ' ' . $this->last_name;
     }
 
-    public function getFullNameShort(): string{
+    public function getFullNameShort(): string
+    {
         return $this->first_name[0] . ' ' . $this->last_name;
     }
 }

@@ -6,11 +6,6 @@ use App\Models\Bug;
 
 class BugRepository
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function all()
     {
         return Bug::with('project', 'user')->get();

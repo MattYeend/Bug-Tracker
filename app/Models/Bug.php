@@ -11,17 +11,17 @@ class Bug extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title', 
-        'description', 
-        'status', 
-        'project_id', 
-        'user_id', 
-        'created_at', 
-        'created_by', 
-        'updated_at', 
-        'updated_by', 
-        'deleted_at', 
-        'deleted_by'
+        'title',
+        'description',
+        'status',
+        'project_id',
+        'user_id',
+        'created_at',
+        'created_by',
+        'updated_at',
+        'updated_by',
+        'deleted_at',
+        'deleted_by',
     ];
 
     public function project()

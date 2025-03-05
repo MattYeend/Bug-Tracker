@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ProjectRepository;
 use App\Repositories\BugRepository;
+use App\Repositories\ProjectRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 

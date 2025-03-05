@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Models\Project;
 
 class ProjectRepository
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function all()
     {
         return Project::with('user', 'bugs')->get();

@@ -6,13 +6,14 @@ use App\Http\Requests\StoreBugRequest;
 use App\Http\Requests\UpdateBugRequest;
 use App\Repositories\BugRepository;
 use App\Repositories\ProjectRepository;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Http\RedirectResponse;
 
 class BugController extends Controller
 {
-    protected $repo, $projectRepo;
+    protected $repo;
+    protected $projectRepo;
 
     public function __construct(BugRepository $repo, ProjectRepository $projectRepo)
     {

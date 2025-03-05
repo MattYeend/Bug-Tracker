@@ -23,7 +23,7 @@ class StoreBugRequest extends FormRequest
     public function rules(): array
     {
         return [
-'           title' => [
+            'title' => [
                 'required',
                 'string',
                 'max:255',
