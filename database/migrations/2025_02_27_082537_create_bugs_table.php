@@ -15,9 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->enum('status', ['open', 'in_progress', 'resolved'])->default('open');
+            $table->enum('status', ['reported', 'started', 'in_progress', 'closed'])->default('reported');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('reported_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('started_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('in_progress_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('closed_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->timestamp('reported_at')->nullable();
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('in_progress_at')->nullable();
+            $table->timestamp('closed_at')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

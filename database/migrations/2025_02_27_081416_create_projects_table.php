@@ -15,9 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->enum('status', ['pending', 'active', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'started', 'in_progress', 'closed'])->default('pending');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('started_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('in_progress_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('closed_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('in_progress_at')->nullable();
+            $table->timestamp('closed_at')->nullable();
             $table->timestamps();
+
+            
         });
     }
 
