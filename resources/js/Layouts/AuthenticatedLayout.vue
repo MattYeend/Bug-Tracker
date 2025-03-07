@@ -77,6 +77,16 @@ const showingNavigationDropdown = ref(false);
                                             Profile
                                         </DropdownLink>
                                         <DropdownLink
+                                            :href="route('bugs.index')"
+                                        >
+                                            Bugs
+                                        </DropdownLink>
+                                        <DropdownLink
+                                            :href="route('projects.index')"
+                                        >
+                                            Projects
+                                        </DropdownLink>
+                                        <DropdownLink
                                             :href="route('logout')"
                                             method="post"
                                             as="button"
