@@ -32,24 +32,38 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports', [ReportsController::class, 'index'])
         ->name('reports.index');
 
-    Route::prefix('bugs')->name('bugs.')->group(function() {
-        Route::get('/', [BugController::class, 'index'])->name('index');
-        Route::get('/create', [BugController::class, 'create'])->name('create');
-        Route::post('/', [BugController::class, 'store'])->name('store');
-        Route::get('/{bugs}', [BugController::class, 'show'])->name('show');
-        Route::get('/{bugs}/edit', [BugController::class, 'edit'])->name('edit');
-        Route::put('/{bugs}', [BugController::class, 'update'])->name('update');
-        Route::delete('/{bugs}', [BugController::class, 'destroy'])->name('destroy');
+    Route::prefix('bugs')->name('bugs.')->group(function () {
+        Route::get('/', [BugController::class, 'index'])
+            ->name('index');
+        Route::get('/create', [BugController::class, 'create'])
+            ->name('create');
+        Route::post('/', [BugController::class, 'store'])
+            ->name('store');
+        Route::get('/{bugs}', [BugController::class, 'show'])
+            ->name('show');
+        Route::get('/{bugs}/edit', [BugController::class, 'edit'])
+            ->name('edit');
+        Route::put('/{bugs}', [BugController::class, 'update'])
+            ->name('update');
+        Route::delete('/{bugs}', [BugController::class, 'destroy'])
+            ->name('destroy');
     });
 
-    Route::prefix('projects')->name('projects.')->group(function() {
-        Route::get('/', [ProjectController::class, 'index'])->name('index');
-        Route::get('/create', [ProjectController::class, 'create'])->name('create');
-        Route::post('/', [ProjectController::class, 'store'])->name('store');
-        Route::get('/{projects}', [ProjectController::class, 'show'])->name('show');
-        Route::get('/{projects}/edit', [ProjectController::class, 'edit'])->name('edit');
-        Route::put('/{projects}', [ProjectController::class, 'update'])->name('update');
-        Route::delete('/{projects}', [ProjectController::class, 'destroy'])->name('destroy');
+    Route::prefix('projects')->name('projects.')->group(function () {
+        Route::get('/', [ProjectController::class, 'index'])
+            ->name('index');
+        Route::get('/create', [ProjectController::class, 'create'])
+            ->name('create');
+        Route::post('/', [ProjectController::class, 'store'])
+            ->name('store');
+        Route::get('/{projects}', [ProjectController::class, 'show'])
+            ->name('show');
+        Route::get('/{projects}/edit', [ProjectController::class, 'edit'])
+            ->name('edit');
+        Route::put('/{projects}', [ProjectController::class, 'update'])
+            ->name('update');
+        Route::delete('/{projects}', [ProjectController::class, 'destroy'])
+            ->name('destroy');
     });
 });
 
